@@ -4,14 +4,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 const path = require('path');
 
 module.exports = {
-  entry: [
-    './src/index.js'
-  ],
-  output: {
-    filename: 'assets/[name].bundle.js',
-    path: path.resolve(__dirname, 'dist'),
-    publicPath: '/'
-  },
   module: {
     rules: [
       {
@@ -27,7 +19,7 @@ module.exports = {
             options: { minimize: true }
           }
         ]
-      }
+      },
     ]
   },
   resolve: {
@@ -35,6 +27,7 @@ module.exports = {
       'styles': path.resolve(__dirname, 'src/styles'),
       'components': path.resolve(__dirname, 'src/components'),
       'src': path.resolve(__dirname, 'src'),
+      'assets': path.resolve(__dirname, 'public/assets'),
       'reducers': path.resolve(__dirname, 'src/reducers'),
       'helpers': path.resolve(__dirname, 'src/helpers')
     }

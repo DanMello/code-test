@@ -1,0 +1,22 @@
+.heading {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.paragraph {
+  margin-top: 20px;
+}
+
+.buttonContainer {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  font-size: 20px;
+}
+
+.text {
+  font-size: 20px;
+  margin-left: 10px;
+}

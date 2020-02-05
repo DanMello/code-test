@@ -3,22 +3,29 @@ const merge = require('webpack-merge');
 const common = require('./webpack.common.js');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-const UglifyJsPlugin = require("uglifyjs-webpack-plugin");
+const TerserPlugin = require('terser-webpack-plugin')
 
 module.exports = merge(common, {
   mode: 'production',
   optimization: {
     minimizer: [
-      new UglifyJsPlugin({
-        uglifyOptions: {
-          mangle: true,
-        },
-        cache: true,
+      new TerserPlugin({
         parallel: true,
-        sourceMap: true
+        terserOptions: {
+          ecma: 6,
+        },
       }),
       new OptimizeCSSAssetsPlugin({})
     ],
+  },
+  entry: [
+    './src/index.production.js'
+  ],
+  output: {
+    filename: 'assets/[name].bundle.js',
+    path: path.resolve(__dirname, 'dist'),
+    libraryTarget: 'commonjs2',
+    publicPath: '/'
   },
   module: {
     rules: [
@@ -37,6 +44,20 @@ module.exports = merge(common, {
         ] 
       }
     ]
+  },
+  externals: {
+    react: {
+      commonjs: "react",
+      commonjs2: "react",
+      amd: "React",
+      root: "React"
+    },
+    "react-dom": {
+      commonjs: "react-dom",
+      commonjs2: "react-dom",
+      amd: "ReactDOM",
+      root: "ReactDOM"
+    }
   },
   plugins: [
     new MiniCssExtractPlugin({

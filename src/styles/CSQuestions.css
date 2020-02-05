@@ -1,0 +1,34 @@
+.heading {
+  font-weight: bold;
+  font-size: 25px;
+}
+
+.paragraph {
+  margin-top: 20px;
+}
+
+.inputContainer {
+  margin-top: 20px;
+}
+
+.label {
+  font-size: 20px;
+}
+
+.input {
+  border: none;
+  outline: none;
+  border-radius: 0;
+  -webkit-appearance: none;
+  border-bottom: 1px solid black;
+  font-size: 16px;
+}
+
+.frogSum {
+  margin-top: 20px;
+}
+
+.error {
+  color: red;
+  margin-top: 20px;
+}
